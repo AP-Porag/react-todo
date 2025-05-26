@@ -1,0 +1,18 @@
+import React from 'react';
+import tick_icon from "../assets/tick.png";
+import not_tick_icon from "../assets/not_tick.png";
+import delete_icon from "../assets/delete.png";
+
+const TodoItem = ({id,text,isComplete,deleteTodo,toggleTodo,tab}) => {
+    return (
+        <div className="flex item-center my-3 gap-2">
+            <div onClick={()=>toggleTodo(id)} className="flex flex-1 item-center cursor-pointer">
+                <img src={isComplete?tick_icon:not_tick_icon} alt="" className="w-7"/>
+                <p className={`text-slate-700 ml-4 text-[17px] decoration-slate-500 ${isComplete && tab !== 'completed'?"line-through":""}`}>{text}</p>
+            </div>
+            <img onClick={() => deleteTodo(id)} src={delete_icon} alt="" className="w-3.5 cursor-pointer"/>
+        </div>
+    )
+};
+
+export default TodoItem;
